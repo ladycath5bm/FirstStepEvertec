@@ -29,17 +29,13 @@
             <td>{{ $client->adress }}</td>
 
             <td>
-                <form action="{{ url('/clients/'.$client->id) }}" method="POST">
-                
-                @csrf
-                @method('DELETE')
-                <input type="submit" onclick="return confirm('Delete?')" value="Delete">
-                </form>
 
-                |
+                <a href="{{ route('clients.edit', $client) }}">Edit</a>
+                <a href="{{ route('clients.show', $client) }}">Show</a>
+                <a href="{{ route('clients.update', $client) }}">Update</a>
+            
 
                 <form action="{{ url('/clients/'.$client->id) }}" method="POST">
-                
                 @csrf
                 @method('DELETE')
                 <input type="submit" onclick="return confirm('Delete?')" value="Delete">
