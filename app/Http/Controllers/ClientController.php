@@ -100,7 +100,6 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //return view('clients.destroy');
         $client->delete();
 
         return redirect()->route('clients.index');
