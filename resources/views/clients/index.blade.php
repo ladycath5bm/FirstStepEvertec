@@ -34,7 +34,7 @@
                 <td>{{ $client->last_name }}</td>
                 <td>{{ $client->email }}</td>
                 <td>{{ $client->phone_number }}</td>
-                <td>{{ $client->country }}}</td>
+                <td>{{ $client->country }}</td>
                 <td>{{ $client->city }}</td>
                 <td>{{ $client->adress }}</td>
     

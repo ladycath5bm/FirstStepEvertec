@@ -23,7 +23,7 @@ class ClientFactory extends Factory
             'phone_number' => $this->faker->phoneNumber(),
             'country' => $this->faker->country(),
             'city' => $this->faker->city(),
-            'adress' => $this->faker->adress(),
+            'adress' => $this->faker->address(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
         ];
     }
