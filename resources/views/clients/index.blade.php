@@ -1,3 +1,4 @@
+<title>Clients</title>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +31,7 @@
             
             <tr>
                 <td>{{ $client->id }}</td>
-                <td>{{ $client->first_name }}}</td>
+                <td>{{ $client->first_name }}</td>
                 <td>{{ $client->last_name }}</td>
                 <td>{{ $client->email }}</td>
                 <td>{{ $client->phone_number }}</td>
@@ -39,24 +40,21 @@
                 <td>{{ $client->adress }}</td>
                 <td>
     
-                    <a href="{{ route('clients.edit', $client) }}">Edit</a>
-                    <a href="{{ route('clients.show', $client) }}">Show</a>
-                    <a href="#" onclick="event.preventDefault(); document.getElementById('form-{{ $client->id }}').submit();">Delete</a>
+                    <a href="{{ route('clients.edit', $client) }}">Edit |</a>
+                    <a href="{{ route('clients.show', $client) }}"> Show |</a>
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('form-{{ $client->id }}').submit();"> Delete</a>
                     <form id="form-{{ $client->id }}" action="{{ route('clients.destroy', $client) }}" method="POST">
                         @csrf
                         @method('DELETE')
                     </form>
-                    <!--<form action="{{ url('/clients/'.$client->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <input type="submit" onclick="return confirm('Delete?')" value="Delete">
-                    </form>
-                    -->
-                </td>
+                </td>   
             </tr>
             @endforeach
         </tbody>
     
     </table>
+    <p>
+        <a href="{{ route('clients.create') }}">Register new client</a>
+    </p>
 </body>
 </html>

@@ -1,3 +1,6 @@
+
+<title>New Client</title>
+<h1>Register New Client</h1>
 <form action="{{ url('/clients') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <label for="first_name">First Name</label>
@@ -29,4 +32,7 @@
     <br>
     <input type="submit" value="Send">
     <br>
+    <p>
+        <a href="{{ route('clients.index') }}">Back to list </a>
+    </p>
 </form>
