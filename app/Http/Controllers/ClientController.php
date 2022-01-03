@@ -55,7 +55,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        return view('clients.show');
+        return view('clients.show', ['client' => $client]);
     }
 
     /**
@@ -66,9 +66,8 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        return view('clients.edit');
+        return view('clients.edit', ['client' => $client]);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -76,10 +75,21 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
+
     public function update(UpdateClientRequest $request, Client $client)
     {
-        //return view('clients.update');
+        //update data-client
+        $client->email = $request->first_name;
+        $client->email = $request->last_name;
+        $client->email = $request->email;
+        $client->email = $request->phone_number;
+        $client->email = $request->country;
+        $client->email = $request->city;
+        $client->email = $request->adress;
         
+        $client->save();
+
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -88,10 +98,10 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Client $client)
     {
         //return view('clients.destroy');
-        Client::destroy($id);
+        $client->delete();
 
         return redirect()->route('clients.index');
     }

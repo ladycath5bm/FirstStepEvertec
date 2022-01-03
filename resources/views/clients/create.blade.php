@@ -26,7 +26,7 @@
     <label for="adress">Adress</label>
     <input type="text" name="adress" id="adress">
     <br>
-
+    <br>
     <input type="submit" value="Send">
     <br>
 </form>
