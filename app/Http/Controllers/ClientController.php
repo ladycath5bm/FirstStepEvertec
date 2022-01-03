@@ -21,7 +21,6 @@ class ClientController extends Controller
         return view('clients.index', $data);
     }
 
-    
     /**
      * Show the form for creating a new resource.
      *
