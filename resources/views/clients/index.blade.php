@@ -37,7 +37,6 @@
                 <td>{{ $client->country }}</td>
                 <td>{{ $client->city }}</td>
                 <td>{{ $client->adress }}</td>
-    
                 <td>
     
                     <a href="{{ route('clients.edit', $client) }}">Edit</a>
