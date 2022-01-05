@@ -24,6 +24,7 @@ class ClientFactory extends Factory
             'country' => $this->faker->country(),
             'city' => $this->faker->city(),
             'adress' => $this->faker->address(),
+            'status' => $this->faker->boolean(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
         ];
     }

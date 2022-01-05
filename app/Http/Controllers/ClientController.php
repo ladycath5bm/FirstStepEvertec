@@ -78,13 +78,14 @@ class ClientController extends Controller
     public function update(UpdateClientRequest $request, Client $client)
     {
         //update data-client
-        $client->email = $request->first_name;
-        $client->email = $request->last_name;
+        $client->first_name = $request->first_name;
+        $client->last_name = $request->last_name;
         $client->email = $request->email;
-        $client->email = $request->phone_number;
-        $client->email = $request->country;
-        $client->email = $request->city;
-        $client->email = $request->adress;
+        $client->phone_number = $request->phone_number;
+        $client->country = $request->country;
+        $client->city = $request->city;
+        $client->adress = $request->adress;
+        $client->status = $request->status;
         
         $client->save();
 

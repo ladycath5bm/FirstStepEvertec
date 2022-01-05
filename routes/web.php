@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function() {
+    return view('auth.login');
+});
 
-Route::resource('clients', ClientController::class);
+Route::resource('/clients', ClientController::class)->middleware('auth');
+
+Auth::routes(['register'=>false, 'reset'=>false]);
+
+Route::get('/home', [ClientController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'auth'], function (){
+    Route::get('/', [ClientController::class, 'index'])->name('home');
+});
