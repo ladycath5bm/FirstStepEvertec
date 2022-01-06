@@ -24,7 +24,7 @@ class CreateClientsTable extends Migration
             $table->string('country');
             $table->string('city');
             $table->string('adress');
-            $table->boolean('status')->true;
+            $table->integer('status');
 
             $table->timestamps();
         });

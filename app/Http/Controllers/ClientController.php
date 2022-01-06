@@ -39,6 +39,24 @@ class ClientController extends Controller
      */
     public function store(StoreClientRequest $request)
     {
+        $vars = [
+            'first_name' => 'required|string|max:100',
+            'last_name' => 'required|string|max:100',
+            'email' => 'required|email',
+            'password' => 'required|password|max:20',
+            'phone_number' => 'required|string|max:25',
+            'country' => 'required|string|max:25',
+            'city' => 'required|string|max:25',
+            'adress' => 'required|string|max:100',
+            'status' => 'required|integer|max:1',
+        ];
+
+        $message = [
+            'required' => 'The field :attribute is required',
+        ];
+
+        $this->validate($request, $vars, $message);
+
         $dataClient = request()->except('_token');
         Client::insert($dataClient);
 
@@ -78,6 +96,23 @@ class ClientController extends Controller
     public function update(UpdateClientRequest $request, Client $client)
     {
         //update data-client
+        $vars = [
+            'first_name' => 'required|string|max:100',
+            'last_name' => 'required|string|max:100',
+            'email' => 'required|email',
+            'phone_number' => 'required|string|max:25',
+            'country' => 'required|string|max:25',
+            'city' => 'required|string|max:25',
+            'adress' => 'required|string|max:100',
+            'status' => 'required|integer|max:1',
+        ];
+
+        $message = [
+            'required' => 'The field :attribute is required',
+        ];
+
+        $this->validate($request, $vars, $message);
+
         $client->first_name = $request->first_name;
         $client->last_name = $request->last_name;
         $client->email = $request->email;
@@ -89,7 +124,7 @@ class ClientController extends Controller
         
         $client->save();
 
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('message', 'Client edited!');
     }
 
     /**
@@ -102,6 +137,6 @@ class ClientController extends Controller
     {
         $client->delete();
 
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('message', 'Client delete!');
     }
 }

@@ -8,7 +8,7 @@
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                    <title>Edit: Client-Data</title>
+                    <title>Edit: Client Data</title>
                 </head>
                 <body>
                     <br>
@@ -20,6 +20,17 @@
                             </h1>
                         </div>
                     </div>
+                    @if (count($errors) > 0)
+
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                        
+                    @endif
                     <form action="{{ route('clients.update', $client) }}" method="POST">
                         @csrf 
                         @method('PUT')
@@ -61,7 +72,7 @@
                             <label for="phone_number" class="col-md-3 col-form-label text-md-end">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-7">
-                                <input type="text" name="phone_number" id="phone_number" class="form-control" value="{{ $client->phone_number }}"  required autocomplete="phone_number">
+                                <input type="tel" name="phone_number" id="phone_number" class="form-control" value="{{ $client->phone_number }}" required autocomplete="phone_number">
                             </div>
                         </div>
                         <br>
@@ -87,7 +98,7 @@
                         <div class="row md-3">
                             <label for="adress" class="col-md-3 col-form-label text-md-end">{{ __('Address') }}</label>
                             <div class="col-md-7">
-                                <input type="text" name="adress" id="adress" class="form-control" value="{{ $client->adress }}">
+                                <input type="address" name="adress" id="adress" class="form-control" value="{{ $client->adress }}" required autocomplete="adress">
                             </div>
                         </div>
                         <br>
@@ -95,8 +106,21 @@
                         <div class="row md-3">
                             <label for="status" class="col-md-3 col-form-label text-md-end">{{ __('Status') }}</label>
                             <div class="col-md-2">
-                                <input type="text" name="status" id="status" class="form-control" value="{{ $client->status }}">
-                       
+                            @if ( $client->status == 1 )
+                                <input type="radio" name="status" id="enable" value="{{ $client->status = 1 }}" checked>
+                                <label for="enable">Enable</label><br>
+
+                                <input type="radio" name="status" id="disable" value="{{ $client->status = 0 }}">
+                                <label for="disable">Disable</label><br>
+                            @else
+                                <input type="radio" name="status" id="enable" value="{{ $client->status = 1 }}">
+                                <label for="enable">Enable</label><br>
+
+                                <input type="radio" name="status" id="disable" value="{{ $client->status = 0 }}" checked>
+                                <label for="disable">Disable</label><br>
+
+                            @endif
+
                             </div>
                         </div>
 

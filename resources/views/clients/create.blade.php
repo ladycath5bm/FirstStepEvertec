@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('content')
 
+@if (count($errors) > 0)
+
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+        </ul>
+    </div>
+    
+@endif
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -61,7 +73,7 @@
                     <div class="row md-3">
                         <label for="phone_number" class="col-md-3 col-form-label text-md-end">{{ __('Phone Number') }}</label>
                         <div class="col-md-7">
-                            <input type="phone_number" name="phone_number" id="phone_number" class="form-control">
+                            <input type="tel" name="phone_number" id="phone_number" class="form-control">
                         </div>
                     </div>
                     <br>
@@ -91,8 +103,13 @@
 
                     <div class="row md-3">
                         <label for="status" class="col-md-3 col-form-label text-md-end">{{ __('Status') }}</label>
-                        <div class="col-md-7">
-                            <input type="boolean" name="status" id="status" class="form-control">
+                        <div class="col-md-2">
+                            <input type="radio" name="status" id="enable" value="1" checked>
+                            <label for="enable">Enable</label><br>
+
+                            <input type="radio" name="status" id="disable" value="0">
+                            <label for="disable">Disable</label><br>
+
                         </div>
                     </div>
 

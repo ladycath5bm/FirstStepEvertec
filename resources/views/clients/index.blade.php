@@ -3,6 +3,14 @@
 @section('content')
 <div class="container">
 
+    <div class="alert alert-success alert-dismissible" role="alert">
+        @if (Session::has('message'))
+
+        {{ Session::get('message') }}   
+        
+        @endif
+    </div>
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,10 +59,11 @@
                     </td>
                     <td>
         
-                        <a href="{{ route('clients.edit', $client) }}">Edit |</a>
-                        <a href="{{ route('clients.show', $client) }}"> Show |</a>
+                        <a href="{{ route('clients.edit', $client) }}" class="d-inline">Edit |</a>
+                        <a href="{{ route('clients.show', $client) }}" class="d-inline"> Show |</a>
                         <a href="#" onclick="event.preventDefault(); document.getElementById('form-{{ $client->id }}').submit();"> Delete</a>
-                        <form id="form-{{ $client->id }}" action="{{ route('clients.destroy', $client) }}" method="POST">
+                        
+                        <form id="form-{{ $client->id }}" action="{{ route('clients.destroy', $client) }}" method="POST"  class="d-inline">
                             @csrf
                             @method('DELETE')
                         </form>
